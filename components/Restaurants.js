@@ -25,8 +25,10 @@ function Restaurants(props) {
 
     useEffect(() => {
         const location = localStorage.getItem('location') || 'Cary, NC';
-        if (props.foodName) {
-            fetch('http://localhost:3000/api/placeSearch?search=' + props.foodName + '&location=' + location)
+        const server = process.env.NEXT_PUBLIC_API_SERVER;
+        console.log("=====>", server)
+        if (props.foodName && server) {
+            fetch('/api/placeSearch?search=' + props.foodName + '&location=' + location)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
