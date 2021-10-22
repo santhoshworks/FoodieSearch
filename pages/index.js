@@ -12,6 +12,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import React from 'react';
+import Grid from '@mui/material/Grid';
 
 export default function Home() {
   const [foodName, setFoodName] = React.useState(null);
@@ -32,31 +33,24 @@ export default function Home() {
 
       </Head>
 
-      <Navbar />
-      <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2} sx={{ m: '2rem' }}>
-        {/* <Container maxWidth="lg"> */}
-          <Box gridColumn="span 6">
-             
-              {/* <div className={styles.logo}><img src="https://img.icons8.com/color/100/000000/bento.png"/> </div>
-            <div className={styles.title}>Foody</div> */}
-              <RandomFoodGenerator setFoodName={setFoodName} />
- 
-          </Box>
-          <Box gridColumn="span 4">
-              <Restaurants foodName={foodName}/>
-          </Box>
-          <Box gridColumn="span 4">
-            {/* <Item>xs=4</Item> */}
-          </Box>
-          <Box gridColumn="span 8">
-            {/* <Item>xs=8</Item> */}
-          </Box>
-        {/* </Container> */}
 
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={12} lg={12}>
+            <Navbar />
+          </Grid>
+          <Grid item xs={12} md={6} lg={6}>
+            <RandomFoodGenerator setFoodName={setFoodName} />
+          </Grid>
+          <Grid item xs={12} md={5} lg={5}>
+            <Restaurants foodName={foodName} />
+          </Grid>
+        </Grid>
       </Box>
 
 
-    </div>      
+
+    </div>
     // </ThemeProvider>
   )
 }
