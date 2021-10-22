@@ -43,7 +43,7 @@ function Restaurants(props) {
             <Stack spacing={2}>
                 {restaurants.slice(0, 5).map(place => {
                     return (
-                        <StyledCard sx={{ display: 'flex' }}>
+                        <StyledCard sx={{ display: 'flex' }} key={place.name}> 
                             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                 <CardContent sx={{ flex: '1 0 auto' }}>
                                     <Typography component="div" variant="h5">
@@ -57,8 +57,8 @@ function Restaurants(props) {
  
                                     <Rating name="half-rating-read" defaultValue={place.rating} precision={0.5} readOnly />
                                     {
-                                        Array(place.price_level).map(()=> {
-                                            return <AttachMoneyIcon fontSize="inherit" />
+                                        Array(place.price_level).map((value, index)=> {
+                                            return <AttachMoneyIcon fontSize="inherit"  key={'priceleve'+index}/>
                                         })
                                     } 
                                  
